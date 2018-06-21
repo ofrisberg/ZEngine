@@ -38,6 +38,16 @@ abstract class ManageDB extends Entity{
 		$this->loadAttributes($query->fetch_assoc());
 	}
 	
+	public function searchByName($name){ 
+		global $DB;
+		$name = $DB->real_escape_string($name);
+		$query = $DB->query("SELECT * FROM ".$this->selfTable()." WHERE ".$this->selfColName()." LIKE '$name%' ORDER BY LENGTH(".$this->selfColName().") ASC LIMIT 1");
+		if($query->num_rows == 0){
+			throw new Exception("Couldnt find row");
+		}
+		$this->loadAttributes($query->fetch_assoc());
+	}
+	
 	public function loadAll($offset,$limit){
 		$entities = [];
 		global $DB;
