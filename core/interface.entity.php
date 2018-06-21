@@ -12,6 +12,7 @@ interface iEntity{
 	public function selfTotColumns();
 	public function selfTotRows();
 	public function selfListUrl();
+	public function selfListDescription();
 	public function selfAttributeRows();
 	
 	public function selfFile();

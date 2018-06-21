@@ -7,6 +7,10 @@ class ZRecept extends ManageTXT implements iEntity{
 	public function selfFile(){return "recept.csv";}
 	public function selfTotColumns(){return 3;}
 	
+	public function selfListDescription(){ 
+		return "Lista över dom 100 recept som har kortast tillagningstid."; 
+	}
+
 	public function toLink(){ 
 		$url = $this->getAttributes()[1][value];
 		$str = '<a href="'.$url.'">'.$this->getName().'</a>';

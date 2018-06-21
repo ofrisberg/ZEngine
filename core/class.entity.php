@@ -49,6 +49,7 @@ abstract class Entity{
 	public function selfNamePlural(){ return $this->selfName(); }
 	public function selfUrlPlural(){ return $this->selfUrl(); }
 	public function selfListUrl(){ return '/z/'.$this->selfUrlPlural().'/'; }
+	public function selfListDescription(){ return ""; }
 	public function selfAttributeRows(){ return $this->attr_rows; }
 	
 	public function searchByName($name){ return $this->loadByName($name); }

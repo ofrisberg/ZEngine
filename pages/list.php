@@ -15,7 +15,8 @@ if(!Entity::entityExist($_GET["e_url"])){Page::onNotFound();}
 
 $e_row = Entity::getEntityRow($_GET["e_url"]);
 require_once '../classes/'.$e_row['e_filename'];
-$entity = new $e_row['e_class'](Entity::getAttrRows($e_row['e_class']));
+$attr_rows = Entity::getAttrRows($e_row['e_class']);
+$entity = new $e_row['e_class']($attr_rows);
 
 
 $pagenum = 1;
@@ -63,6 +64,26 @@ echo $page->serveTop();
 </p>
 <h1><?= $entity->selfNamePlural() ?></h1>
 <?php
+ 
+if ($pagenum == 1){
+	
+	$listDescription = $entity->selfListDescription();
+	if($listDescription != ""){
+		echo "<p>$listDescription</p>";
+	}
+	
+	$attrElements = [];
+	foreach ($attr_rows as $attr){
+		if(in_array($attr['a_type'],['number','decimal','short','datetime'])){
+			$attrElements[] = "<code class='w3-codespan w3-small'>$attr[a_singular]</code>";
+		}
+	}
+	if (count($attrElements) > 1){
+		echo "<p>Dessa egenskaper är sökbara men finns inte för varje ".lcfirst($entity->selfName()).": ".implode(" ",$attrElements)."</p>";
+	}
+} 
+
+
 echo $pagelinks;
 ?>
 <p>

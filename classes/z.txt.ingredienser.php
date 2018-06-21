@@ -9,6 +9,10 @@ class ZIngredienser extends ManageTXT implements iEntity{
 	public function selfFile(){return "ingredienser.csv";}
 	public function selfTotColumns(){return 2;}
 	
+	public function selfListDescription(){ 
+		return "Lista över topp 100 flest förekommande ingredienserna från svenska recept."; 
+	}
+	
 	public function toLink(){ 
 		$str = $this->getName();
 		$str .= " (".$this->getAttributes()[1][value].")";
