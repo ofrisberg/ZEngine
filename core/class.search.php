@@ -2,9 +2,13 @@
 
 class Search{
 	private $entities;
+	private $excludeClassNames = ["ZGatunamn"];
+	
 	function __construct() {
 		$this->entities = [];
     }
+	
+	public function setExcludeClassNames($classNames){$this->excludeClassNames = $classNames;}
 	
 	public function getEntitySelfMatch($str){
 		foreach($this->entities as $e){
@@ -15,11 +19,12 @@ class Search{
 		throw new Exception("no EntitySelfMatch found");
 	}
 	
-	public function getEntitiesByName($str){
+	public function getEntitiesByName($str, $searchBool = true){
 		$arr = [];
 		foreach($this->entities as $e){
 			try{
-				$e->searchByName($str);
+				if($searchBool){$e->searchByName($str);}
+				else{$e->loadByName($str);}
 				$arr[] = $e;
 			}catch (Exception $exception){}
 		}
@@ -81,11 +86,15 @@ class Search{
 		return false;
 	}
 	
-	public function loadEntities(){
+	public function loadEntities($pathToClassDir = '..',$pathToTxt = '../txt'){
 		$entity_rows = Entity::getEntityRows();
 		foreach($entity_rows as $e_row){
-			require_once '../classes/'.$e_row['e_filename'];
-			$this->entities[] = new $e_row['e_class'](Entity::getAttrRows($e_row['e_class']));
+			if(!in_array($e_row['e_class'],$this->excludeClassNames)){
+				require_once $pathToClassDir.'/classes/'.$e_row['e_filename'];
+				$e = new $e_row['e_class'](Entity::getAttrRows($e_row['e_class']));
+				$e->setPathToTxtDir($pathToTxt);
+				$this->entities[] = $e;
+			}
 		}
 	}
 	

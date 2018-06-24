@@ -7,7 +7,7 @@ abstract class ManageTXT extends Entity{
 	public function selfTotColumns(){return 1;}
 	
 	public function selfTotRows(){
-		$file = "../txt/".$this->selfFile();
+		$file = $this->path_txt."/".$this->selfFile();
 		$linecount = 0;
 		$handle = fopen($file, "r");
 		while(!feof($handle)){
@@ -31,7 +31,7 @@ abstract class ManageTXT extends Entity{
 		$this->loadByCol($this->selfColName(),$name);
 	}
 	public function loadByCol($col,$val){
-		$f = fopen("../txt/".$this->selfFile(), 'r');
+		$f = fopen($this->path_txt."/".$this->selfFile(), 'r');
 		while (!feof($f)) {
 			$line = $this->trimLine(fgets($f));
 			$arr = $this->splitLine($line);
@@ -51,7 +51,7 @@ abstract class ManageTXT extends Entity{
 	public function loadRandom(){
 		$offset = rand(1,$this->selfTotRows()-5);
 		$iOffset = 1;
-		$f = fopen("../txt/".$this->selfFile(), 'r');
+		$f = fopen($this->path_txt."/".$this->selfFile(), 'r');
 		while (!feof($f)) {
 			$line = $this->trimLine(fgets($f));
 			if($iOffset > $offset){
@@ -68,7 +68,7 @@ abstract class ManageTXT extends Entity{
 	public function loadAll($offset,$limit){
 		$iOffset = 1;
 		$iLimit = 1;
-		$f = fopen("../txt/".$this->selfFile(), 'r');
+		$f = fopen($this->path_txt."/".$this->selfFile(), 'r');
 		$entities = [];
 		$class = get_called_class();
 		while (!feof($f)) {
@@ -101,7 +101,7 @@ abstract class ManageTXT extends Entity{
 	}
 	
 	public function loadWhenSingleCol($val){
-		$f = fopen("../txt/".$this->selfFile(), 'r');
+		$f = fopen($this->path_txt."/".$this->selfFile(), 'r');
 		$found = false;
 		while (!feof($f)) {
 			$line = $this->trimLine(fgets($f));

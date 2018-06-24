@@ -4,10 +4,13 @@ abstract class Entity{
 	
 	private $attributes = [];
 	protected $attr_rows = [];
+	protected $path_txt = "../txt";
 	
 	function __construct($attr_rows) {
 		$this->attr_rows = $attr_rows;
     }
+	
+	public function setPathToTxtDir($path){$this->path_txt = $path;}
 	
 	public function loadAttributes($data_row) {
 		foreach($this->attr_rows as $attr_row){
