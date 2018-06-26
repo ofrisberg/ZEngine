@@ -7,11 +7,6 @@ class ZYrken extends ManageTXT implements iEntity{
 	public function selfFile(){return "yrken.txt";}
 	
 	function __construct($attr_rows) { parent::__construct($attr_rows); }
-
 }
-
-
-
-
 
 ?>
