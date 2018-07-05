@@ -17,6 +17,15 @@ class ZVarldsarv extends ManageTXT implements iEntity{
 		return $arr;
 	}
 	
+	public function toLink(){
+		$namn = $this->getName();
+		$land = $this->getAttributes()['0']['value'];
+		if($this->hasPage()){
+			return "<a href='/z/".$this->selfUrlPlural()."/".$this->getId()."/'>$namn</a> ($land)";
+		}
+		return "$namn ($land)";
+	}
+	
 	function __construct($attr_rows) { parent::__construct($attr_rows); }
 }
 
