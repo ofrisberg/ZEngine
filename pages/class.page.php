@@ -9,6 +9,7 @@ class Page extends Template{
 		
 		$this->addMenuLink("ZDB","");
 		$this->addMenuLink("Listor","/z/");
+		$this->addMenuLink("Projekt","/p/");
 		
 		$this->addFooterItem("ZDB © ".date('Y'));
 		$this->addFooterItem("<a href='/om-webbplatsen/'>Om webbplatsen</a>");

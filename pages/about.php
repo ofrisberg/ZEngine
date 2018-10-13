@@ -88,9 +88,9 @@ function mostRecentModifiedFileTime($dirName,$doRecursive = false) {
 ?>
 <h2>Uppdateringar</h2>
 <table class="w3-table w3-bordered">
-	<tr><td>Senaste sidan</td><td><?= mostRecentModifiedFileTime(PATH."projekt/zengine/pages/") ?></td></tr>
-	<tr><td>Senaste kärnfilen</td><td><?= mostRecentModifiedFileTime(PATH."projekt/zengine/core/") ?></td></tr>
-	<tr><td>Senaste objekt-klassen</td><td><?= mostRecentModifiedFileTime(PATH."projekt/zengine/classes/") ?></td></tr>
+	<tr><td>Senaste sidan</td><td><?= mostRecentModifiedFileTime(PATH."p/zengine/pages/") ?></td></tr>
+	<tr><td>Senaste kärnfilen</td><td><?= mostRecentModifiedFileTime(PATH."p/zengine/core/") ?></td></tr>
+	<tr><td>Senaste objekt-klassen</td><td><?= mostRecentModifiedFileTime(PATH."p/zengine/classes/") ?></td></tr>
 </table>
 
 
