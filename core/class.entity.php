@@ -39,7 +39,7 @@ abstract class Entity {
 
     public function cleanValue($val) {
         $val = trim($val, '"');
-        return $val;
+        return $val."";
     }
 
     private function addAttribute($attr_row, $value) {
@@ -49,6 +49,7 @@ abstract class Entity {
             "value" => $value,
             "type" => $attr_row["a_type"],
             "append" => $attr_row["a_append"],
+            "column" => $attr_row["a_column"],
         ];
     }
 
@@ -167,6 +168,8 @@ abstract class Entity {
         $e_url = $DB->real_escape_string($e_url);
         return ($DB->query("SELECT e_url FROM entities WHERE e_url='$e_url'")->num_rows == 1);
     }
+    
+    public abstract function getSorting();
 
 }
 

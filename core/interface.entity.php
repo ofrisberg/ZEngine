@@ -49,6 +49,8 @@ interface iEntity {
     public function getName();
 
     public function getAttributes();
+    
+    public function getSorting();
 
     public function toLink();
 

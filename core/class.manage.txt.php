@@ -149,6 +149,10 @@ abstract class ManageTXT extends Entity {
         }
         return $arr;
     }
+    
+    public function getSorting() {
+        return new SortingTXT($this);
+    }
 
 }
 

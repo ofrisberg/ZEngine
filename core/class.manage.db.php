@@ -76,6 +76,11 @@ abstract class ManageDB extends Entity {
         }
         return $query->fetch_assoc();
     }
+    
+    public function getSorting() {
+        return new SortingDB($this);
+    }
+
 
 }
 

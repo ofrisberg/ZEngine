@@ -6,6 +6,7 @@ require_once '../core/interface.entity.php';
 require_once '../core/class.entity.php';
 require_once '../core/class.manage.db.php';
 require_once '../core/class.manage.txt.php';
+require_once '../core/class.sorting.php';
 
 require_once 'class.page.php';
 
@@ -57,5 +58,25 @@ foreach ($attrs as $attr) {
     }
 }
 echo '</p>';
+
+$sorting = $entity->getSorting();
+$abnormals = [];
+foreach ($attrs as $attr) {
+    $abnormal = $sorting->isAbnormal($attr);
+    if ($abnormal < 0) {
+        $abnormals[] = $attr["singular"] . " är lägst av alla " . $entity->selfNamePlural();
+    } else if ($abnormal > 0) {
+        $abnormals[] = $attr["singular"] . " är högst av alla " . $entity->selfNamePlural();
+    }
+}
+if (count($abnormals) > 0) {
+    echo '<p><b>Avvikande statistik: </b><br/>';
+    foreach ($abnormals as $value) {
+        echo $value . "<br/>";
+    }
+    echo '</p>';
+}
+
+
 echo $page->serveBottom();
 
