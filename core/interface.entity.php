@@ -50,6 +50,8 @@ interface iEntity {
 
     public function getAttributes();
     
+    public function getAttributeObjects();
+    
     public function getSorting();
 
     public function toLink();

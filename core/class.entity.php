@@ -3,6 +3,7 @@
 abstract class Entity {
 
     private $attributes = [];
+    private $attributeObjects = [];
     protected $attr_rows = [];
     protected $path_txt = "../txt";
 
@@ -39,18 +40,22 @@ abstract class Entity {
 
     public function cleanValue($val) {
         $val = trim($val, '"');
-        return $val."";
+        return $val . "";
     }
 
     private function addAttribute($attr_row, $value) {
-        $this->attributes[$attr_row["a_column"]] = [
+        $arr = [
             "singular" => $attr_row["a_singular"],
             "plural" => "",
             "value" => $value,
             "type" => $attr_row["a_type"],
             "append" => $attr_row["a_append"],
             "column" => $attr_row["a_column"],
+            "url" => $attr_row["a_url"],
+            "question" => $attr_row["a_question"],
         ];
+        $this->attributes[$attr_row["a_column"]] = $arr;
+        $this->attributeObjects[] = new Attribute($this, $arr);
     }
 
     public function selfSource() {
@@ -85,6 +90,10 @@ abstract class Entity {
         return $this->attributes;
     }
 
+    public function getAttributeObjects() {
+        return $this->attributeObjects;
+    }
+
     public function getId() {
         return $this->getAttributes()[$this->selfColId()]["value"];
     }
@@ -116,7 +125,7 @@ abstract class Entity {
             $val = substr($val, 0, 10);
         }
         if ($attr["append"] != "") {
-            $val .= " " . $attr["append"];
+            $val = strval($val). " " . $attr["append"];
         }
         return $val;
     }
@@ -168,9 +177,8 @@ abstract class Entity {
         $e_url = $DB->real_escape_string($e_url);
         return ($DB->query("SELECT e_url FROM entities WHERE e_url='$e_url'")->num_rows == 1);
     }
-    
-    public abstract function getSorting();
 
+    public abstract function getSorting();
 }
 
 ?>
