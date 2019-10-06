@@ -47,7 +47,7 @@ echo $page->serveTop();
     <span class="w3-large">Svar:</span>
     <h1 style="margin-top:0px;margin-bottom:30px;" 
         itemprop="suggestedAnswer acceptedAnswer" itemscope itemtype="http://schema.org/Answer">
-        <span itemprop="text"><?= $thisObj->getValue() . " " . $thisObj->getAppend() ?></span>
+        <span itemprop="text"><?= $thisObj->getDisplayValue() ?></span>
     </h1>
     <span class="w3-medium w3-text-gray">
         <a href="/z/">Listor</a> / <a href="<?= $entity->selfListUrl() ?>"><?= $entity->selfNamePlural() ?></a> / <?= $entity->toLink() ?> / <?= $thisObj->getName() ?>

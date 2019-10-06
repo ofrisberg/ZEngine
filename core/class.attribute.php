@@ -6,6 +6,7 @@ class Attribute {
     protected $arr;
     protected $name;
     protected $value;
+    protected $displayValue;
     protected $type;
     protected $append;
     protected $column;
@@ -16,7 +17,8 @@ class Attribute {
         $this->parent = $parent;
         $this->arr = $arr;
         $this->name = $arr["singular"];
-        $this->value = $arr["value"];
+        $this->value = $arr;
+        $this->displayValue = $parent->toValue($arr);
         $this->type = $arr["type"];
         $this->append = $arr["append"];
         $this->column = $arr["column"];
@@ -40,7 +42,7 @@ class Attribute {
     public function toListItem() {
         $text = $this->parent->toListItem($this->arr);
         if ($this->hasQuestion()) {
-            return $text . " <a href='" . $this->getFullUrl() . "'>(Länk)</a>";
+            return $text . " <a href='" . $this->getFullUrl() . "'>[Länk]</a>";
         }
         return $text;
     }
@@ -50,13 +52,17 @@ class Attribute {
     function getArr() {
         return $this->arr;
     }
-        
+
     function getName() {
         return $this->name;
     }
 
     function getValue() {
         return $this->value;
+    }
+
+    function getDisplayValue() {
+        return $this->displayValue;
     }
 
     function getType() {

@@ -54,6 +54,7 @@ foreach ($attrs as $attr) {
 }
 echo '</p>';
 
+$time_start_abnormal = microtime(true);
 $sorting = $entity->getSorting();
 $abnormals = [];
 foreach ($attrs as $attr) {
@@ -64,6 +65,8 @@ foreach ($attrs as $attr) {
         $abnormals[] = $attr["singular"] . " är högst av alla " . $entity->selfNamePlural();
     }
 }
+$abnormal_lookup_seconds = microtime(true) - $time_start_abnormal;
+echo "<!-- Abnormal search took  $abnormal_lookup_seconds seconds--->";
 if (count($abnormals) > 0) {
     echo '<p><b>Avvikande statistik: </b><br/>';
     foreach ($abnormals as $value) {

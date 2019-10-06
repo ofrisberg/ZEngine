@@ -81,6 +81,10 @@ abstract class Entity {
     public function selfAttributeRows() {
         return $this->attr_rows;
     }
+    
+    public function selfIsAbnormalSearchFast(){
+        return true;
+    }
 
     public function searchByName($name) {
         return $this->loadByName($name);

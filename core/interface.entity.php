@@ -29,6 +29,8 @@ interface iEntity {
     public function selfFile();
 
     public function selfTable();
+    
+    public function selfIsAbnormalSearchFast();
 
     public function searchByName($name);
 
@@ -61,7 +63,7 @@ interface iEntity {
     public function toValue($attr);
 
     public function hasPage();
-
+    
     public function parseValue($attr_row, $val);
 }
 

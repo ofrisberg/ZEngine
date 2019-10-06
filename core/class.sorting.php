@@ -42,7 +42,7 @@ class SortingDB extends Sorting {
     }
 
     private function buildSql($tbl, $col, $val, $sign) {
-        return "SELECT * FROM $tbl WHERE $col $sign $val AND $col<>'0' AND $col NOT LIKE '%-%' AND $col NOT LIKE '% %' AND $col<>'$val'";
+        return "SELECT $col FROM $tbl WHERE $col $sign $val AND $col<>'0' AND $col NOT LIKE '%-%' AND $col NOT LIKE '% %' AND $col<>'$val'";
     }
 
 }
