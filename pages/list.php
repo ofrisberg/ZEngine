@@ -18,9 +18,16 @@ $entity = new $e_row['e_class']($attr_rows);
 
 
 $pagenum = 1;
+
+$nr_pages_before = 4;
+$nr_pages_after = 4;
+
 $offset = 0;
 $items_per_page = 50;
+
 $tot_rows = $entity->selfTotRows();
+$tot_pages = ceil($tot_rows / $items_per_page);
+
 $mainUrl = $entity->selfListUrl();
 
 if (isset($_GET["sida"])) {
@@ -39,17 +46,34 @@ if ($offset > $tot_rows || $offset < 0 || $pagenum <= 0) {
     Page::onNotFound();
 }
 $links = [];
-for ($i = $pagenum - 5; $i < $pagenum; $i++) {
+
+//first page
+if (1 < $pagenum - $nr_pages_before) {
+    $links[] = "<a class='w3-button' href='$mainUrl'>1</a>";
+}
+
+//pages before
+for ($i = $pagenum - $nr_pages_before; $i < $pagenum; $i++) {
     if ($i > 0) {
         $links[] = "<a class='w3-button' href='$mainUrl" . "&sida=" . "$i'>$i</a>";
     }
 }
+
+//curent page
 $links[] = "<a class='w3-button w3-pale-green' href='$mainUrl" . "&sida=" . "$pagenum'>$pagenum</a>";
-for ($i = $pagenum + 1; $i < $pagenum + 5; $i++) {
+
+//pages after
+for ($i = $pagenum + 1; $i <= $pagenum + $nr_pages_after; $i++) {
     if ((($i - 1) * $items_per_page) < $tot_rows) {
         $links[] = "<a class='w3-button' href='$mainUrl" . "&sida=" . "$i'>$i</a>";
     }
 }
+
+//last page
+if ($pagenum + $nr_pages_after < $tot_pages) {
+    $links[] = "<a class='w3-button' href='$mainUrl" . "&sida=" . "$tot_pages'>$tot_pages</a>";
+}
+
 $pagelinks = '<div class="w3-bar">' . implode(' ', $links) . '</div>';
 if (count($links) == 1) {
     $pagelinks = "";
@@ -90,11 +114,11 @@ echo $pagelinks;
 ?>
 <p>
 <ul class="w3-ul">
-<?php foreach ($entities as $e) { ?>
+    <?php foreach ($entities as $e) { ?>
         <li><?= $e->toLink() ?></li>
-    <?php
-}
-?>
+        <?php
+    }
+    ?>
 </ul>
 </p>
 <?php
