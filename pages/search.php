@@ -188,7 +188,7 @@ echo $page->serveTop();
 
                 XHR.addEventListener('load', Ask.onSuccess);
                 XHR.addEventListener('error', Ask.onFailure);
-                XHR.open('POST', '/');
+                XHR.open('POST', '/sok/');
                 XHR.send(FD);
             },
             onSuccess: function (e) {
