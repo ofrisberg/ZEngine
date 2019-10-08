@@ -26,33 +26,6 @@ $page->setTitle("Om webbplatsen");
     Om det är någon information på webbplatsen som du vill ändra eller ta bort så kontakta ollefrisberg[snabela]hotmail.com.
 </p>
 
-<h2>Sökhjälp</h2>
-<p>Det finns fyra olika sätt att söka. Vid varje sökning kommer alla fyra sökningssätt ske men inte i ordningen nedan pga optimeringskäl.</p>
-<ul class="w3-ul">
-    <li class="w3-padding-small">
-        <h4>1. Listnamn</h4>
-        <p>Hela sökordet måste matcha. Kan vara plural eller singular. Returnerar listnamn.<br/>
-            Exempel: <code class="w3-codespan">grundämne</code> ger <i>Grundämnen (lista)</i></p>
-    </li>
-    <li class="w3-padding-small">
-        <h4>2. Objektnamn</h4>
-        <p>Hela sökordet måste matcha. Returnerar objektnamn.<br/>
-            Exempel: <code class="w3-codespan">helium</code> ger <i>Helium (grundämne)</i></p>
-    </li>
-    <li class="w3-padding-small">
-        <h4>3. Objektnamn och attribut</h4>
-        <p>Attributet måste vara först eller sist i sökordet. Returnerar värde.<br/>
-            Exempel: <code class="w3-codespan">helium atomnummer</code> ger <i>2 (Heliums atomnummer)</i></p>
-    </li>
-    <li class="w3-padding-small">
-        <h4>4. Värde och attribut</h4>
-        <p>Attributet måste vara först eller sist i sökordet. Returnerar objektnamn.<br/>
-            Exempel: <code class="w3-codespan">he beteckning</code> ger <i>Helium (grundämne)</i></p>
-    </li>
-</ul>
-<p>Alla sökningar är skiftesokänsliga, 
-    <code class="w3-codespan">hElIuM</code> = <code class="w3-codespan">helium</code> = <code class="w3-codespan">HELIUM</code>.</p>
-
 <h2>Framtidsförslag</h2>
 <p>
     Fixa så att det går att söka via flera olika medium som t.ex. via SMS, email, Messenger.<br/>
