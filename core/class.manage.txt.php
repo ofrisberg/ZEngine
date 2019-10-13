@@ -81,7 +81,7 @@ abstract class ManageTXT extends Entity {
         fclose($f);
     }
 
-    public function loadAll($offset, $limit) {
+    public function loadAll($offset, $limit, $order = null) {
         $iOffset = 1;
         $iLimit = 1;
         $f = fopen($this->path_txt . "/" . $this->selfFile(), 'r');
@@ -149,7 +149,7 @@ abstract class ManageTXT extends Entity {
         }
         return $arr;
     }
-    
+
     public function getSorting() {
         return new SortingTXT($this);
     }

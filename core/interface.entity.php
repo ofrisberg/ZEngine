@@ -42,7 +42,7 @@ interface iEntity {
 
     public function loadRandom();
 
-    public function loadAll($offset, $limit);
+    public function loadAll($offset, $limit, $order);
 
     public function loadAttributes($row);
 

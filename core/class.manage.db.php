@@ -51,10 +51,13 @@ abstract class ManageDB extends Entity {
         $this->loadAttributes($query->fetch_assoc());
     }
 
-    public function loadAll($offset, $limit) {
+    public function loadAll($offset, $limit, $order = null) {
         $entities = [];
         global $DB;
-        $query = $DB->query("SELECT * FROM " . $this->selfTable() . " ORDER BY " . $this->selfColName() . " LIMIT $offset,$limit");
+        if ($order == null) {
+            $order = $this->selfColName();
+        }
+        $query = $DB->query("SELECT * FROM " . $this->selfTable() . " ORDER BY $order LIMIT $offset,$limit");
         if ($query->num_rows == 0) {
             return [];
         }
@@ -76,11 +79,10 @@ abstract class ManageDB extends Entity {
         }
         return $query->fetch_assoc();
     }
-    
+
     public function getSorting() {
         return new SortingDB($this);
     }
-
 
 }
 
