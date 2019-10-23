@@ -27,12 +27,18 @@ function buildBox($name, $number, $url) {
 }
 ?>
 <style>
-    .boxlink{font-style: normal;text-decoration: none; font-size: 20px;}
-    .boxlink span{font-size: 16px;}
+    .boxlink{font-style: normal;text-decoration: none; font-size: 16px;line-height:18px;}
+    .boxlink p{margin:10px auto;}
+    .boxlink span{font-size: 12px;color:gray;}
     .w3-padding-8{padding-top:1px;padding-bottom:1px;}
+    #z{display: inline-block;animation-name: spin;animation-duration: 500ms; animation-timing-function: ease-in-out; animation-iteration-count: 1; }
+    @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
 </style>
-<h1 class="w3-jumbo w3-center">ZDB</h1>
-<h2 class="w3-center w3-xlarge w3-text-gray" style="margin-top:-20px;margin-bottom:40px;">Sveriges spretigaste databas</h2>
+<h1 class="w3-jumbo w3-center"><span id="z">Z</span>DB</h1>
+<h2 class="w3-center w3-text-gray" style="margin-top:-20px;margin-bottom:40px;font-size:22px;">Sveriges spretigaste databas</h2>
 <div class="w3-row">
     <?php
     $i = 0;
