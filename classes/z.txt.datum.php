@@ -2,6 +2,7 @@
 
 class ZDatum extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Datum";}
 	public function selfUrl(){return "datum";}
 	public function selfFile(){return "datum.txt";}

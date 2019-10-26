@@ -2,6 +2,7 @@
 
 class ZElements extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Grundämne";}
 	public function selfNamePlural(){return "Grundämnen";}
 	public function selfUrl(){return "grundamne";}

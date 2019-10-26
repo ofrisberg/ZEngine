@@ -2,6 +2,7 @@
 
 class ZLan extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Län";}
 	public function selfNamePlural(){return "Län";}
 	public function selfUrl(){return "lan";}

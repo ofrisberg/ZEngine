@@ -62,6 +62,10 @@ abstract class Entity {
         return "";
     }
 
+    public function selfNamePrefix() {
+        return "en";
+    }
+    
     public function selfNamePlural() {
         return $this->selfName();
     }

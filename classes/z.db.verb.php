@@ -2,6 +2,7 @@
 
 class ZVerb extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Verb";}
 	public function selfUrl(){return "verb";}
 	

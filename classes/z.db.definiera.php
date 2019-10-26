@@ -2,6 +2,7 @@
 
 class ZDefiniera extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "";}
 	public function selfName(){return "Definiera";}
 	public function selfUrl(){return "definiera";}
 	

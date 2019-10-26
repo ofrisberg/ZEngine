@@ -2,6 +2,7 @@
 
 class ZOrdsprak extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Ordspråk";}
 	public function selfUrl(){return "ordsprak";}
 	public function selfFile(){return "ordsprak.txt";}

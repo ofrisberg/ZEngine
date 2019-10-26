@@ -2,6 +2,8 @@
 
 interface iEntity {
 
+    public function selfNamePrefix();
+    
     public function selfName();
 
     public function selfNamePlural();

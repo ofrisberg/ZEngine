@@ -2,7 +2,8 @@
 
 class ZBerzan extends ManageDB implements iEntity{
 	
-	public function selfName(){return "Berzan";}
+        public function selfNamePrefix(){return "";}
+        public function selfName(){return "Berzan";}
 	public function selfUrl(){return "berzan";}
 	
 	public function selfTable(){return "z_berzan";}

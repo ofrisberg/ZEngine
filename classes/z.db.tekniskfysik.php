@@ -2,6 +2,7 @@
 
 class ZTekniskfysik extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "";}
 	public function selfName(){return "Teknisk fysik";}
 	public function selfUrl(){return "tekniskfysik";}
 	

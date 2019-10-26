@@ -2,6 +2,7 @@
 
 class ZSubstantiv extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Substantiv";}
 	public function selfUrl(){return "substantiv";}
 	

@@ -2,6 +2,7 @@
 
 class ZVarldsarv extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Världsarv";}
 	public function selfUrl(){return "varldsarv";}
 	public function selfFile(){return "varldsarv.txt";}

@@ -2,6 +2,7 @@
 
 class ZLivsmedel extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Livsmedel";}
 	public function selfUrl(){return "livsmedel";}
 	

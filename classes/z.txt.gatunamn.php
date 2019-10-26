@@ -2,6 +2,7 @@
 
 class ZGatunamn extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Gatunamn";}
 	public function selfUrl(){return "gatunamn";}
 	public function selfFile(){return "gatunamn.txt";}

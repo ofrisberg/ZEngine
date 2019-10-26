@@ -2,6 +2,7 @@
 
 class ZYrken extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Yrken";}
 	public function selfUrl(){return "yrken";}
 	public function selfFile(){return "yrken.txt";}

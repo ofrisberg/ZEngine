@@ -2,6 +2,7 @@
 
 class ZCountries extends ManageDB implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Land";}
 	public function selfNamePlural(){return "Länder";}
 	public function selfUrl(){return "land";}

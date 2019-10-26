@@ -2,6 +2,7 @@
 
 class ZRecept extends ManageTXT implements iEntity{
 	
+        public function selfNamePrefix(){return "ett";}
 	public function selfName(){return "Recept";}
 	public function selfUrl(){return "recept";}
 	public function selfFile(){return "recept.csv";}
