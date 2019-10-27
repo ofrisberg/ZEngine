@@ -2,7 +2,8 @@
 
 class ZSporter extends ManageTXT implements iEntity{
 	
-	public function selfName(){return "Sporter";}
+	public function selfName(){return "Sport";}
+        public function selfNamePlural(){return "Sporter";}
 	public function selfUrl(){return "sporter";}
 	public function selfFile(){return "sporter.txt";}
 	

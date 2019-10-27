@@ -127,13 +127,7 @@ class Search {
             $e->loadRandom();
             $bool = true;
             while ($bool) {
-                $attrs = $e->getAttributes();
-                $shuffled_array = array();
-                $keys = array_keys($attrs);
-                shuffle($keys);
-                foreach ($keys as $key) {
-                    $shuffled_array[$key] = $attrs[$key];
-                }
+                $shuffled_array = $this->getShuffledAttributes($e);
                 foreach ($shuffled_array as $attr_tmp) {
                     if (in_array($attr_tmp['type'], ['number', 'decimal', 'short'])) {
                         $bool = false;
@@ -150,8 +144,36 @@ class Search {
         return mb_strtolower($out, 'UTF-8');
     }
 
+    public function getRandomValueAttributeQuestion() {
+        $e = $this->getRandomEntity();
+        $e->loadRandom();
+        while (true) {
+            $attributes = $this->getShuffledAttributes($e);
+            foreach ($attributes as $testAttr) {
+                $attrObj = new Attribute($e, $testAttr);
+                $question = $attrObj->getQuestion();
+                if ($question != "") {
+                    return $question;
+                }
+            }
+            $e = $this->getRandomEntity();
+            $e->loadRandom();
+        }
+    }
+
     public function getRandomEntity() {
         return $this->entities[rand(0, count($this->entities) - 1)];
+    }
+
+    private function getShuffledAttributes($entity) {
+        $attrs = $entity->getAttributes();
+        $shuffled_array = array();
+        $keys = array_keys($attrs);
+        shuffle($keys);
+        foreach ($keys as $key) {
+            $shuffled_array[$key] = $attrs[$key];
+        }
+        return $shuffled_array;
     }
 
 }
